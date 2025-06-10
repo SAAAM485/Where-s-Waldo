@@ -19,8 +19,12 @@ app.use(
 );
 
 const dataRoutes = require("./routes/dataRouter");
-app.use("/api/data", dataRoutes);
+app.use("/api/", dataRoutes);
 
-app.listen(port, () => {
-    console.log(`Server running at port http://localhost:${port}/`);
-});
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Server running at port http://localhost:${port}/`);
+    });
+}
+
+module.exports = app; // Export the app for testing purposes

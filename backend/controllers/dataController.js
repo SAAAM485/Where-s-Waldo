@@ -21,7 +21,7 @@ async function fetchAllImages(req, res) {
 }
 
 async function fetchImageById(req, res) {
-    const rawId = req.params.id;
+    const rawId = req.params.imageId;
     const id = parseInt(rawId, 10);
 
     if (isNaN(id) || id < 1) {
@@ -77,6 +77,15 @@ async function fetchCharactersByImageId(req, res) {
 
     try {
         const characters = await db.getCharactersByImageId(imageId);
+        if (!characters || characters.length === 0) {
+            return res.status(404).json({
+                success: false,
+                error: {
+                    code: "IMAGE_NOT_FOUND",
+                    message: "Image not found",
+                },
+            });
+        }
         return res.status(200).json({
             success: true,
             data: characters,

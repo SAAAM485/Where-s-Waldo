@@ -16,7 +16,7 @@ async function getAllImages() {
 async function getImageById(id) {
     try {
         const image = await prisma.image.findUnique({
-            where: { id },
+            where: { id: parseInt(id, 10) },
         });
         return image;
     } catch (error) {
@@ -28,7 +28,7 @@ async function getImageById(id) {
 async function getCharactersByImageId(imageId) {
     try {
         const characters = await prisma.character.findMany({
-            where: { imageId },
+            where: { imageId: parseInt(imageId, 10) },
             orderBy: {
                 id: "asc",
             },
@@ -42,13 +42,13 @@ async function getCharactersByImageId(imageId) {
 async function verifyCharacter(id, x, y) {
     try {
         const character = await prisma.character.findUnique({
-            where: { id },
+            where: { id: parseInt(id, 10) },
         });
         if (!character) {
             return false;
         }
-        const dx = character.x - x;
-        const dy = character.y - y;
+        const dx = parseFloat(character.x) - parseFloat(x);
+        const dy = parseFloat(character.y) - parseFloat(y);
         return dx * dx + dy * dy <= 0.035 * 0.035;
     } catch (error) {
         console.error("Error verifying character:", error);
@@ -59,10 +59,10 @@ async function verifyCharacter(id, x, y) {
 async function getRecordsByImageId(imageId) {
     try {
         const records = await prisma.record.findMany({
-            where: { imageId },
+            take: 5,
+            where: { imageId: parseInt(imageId, 10) },
             orderBy: {
                 score: "asc",
-                take: 5,
             },
         });
         return records;
@@ -75,7 +75,7 @@ async function writeRecord(imageId, name, score) {
     try {
         const record = await prisma.record.create({
             data: {
-                imageId,
+                imageId: parseInt(imageId, 10),
                 name,
                 score,
             },
