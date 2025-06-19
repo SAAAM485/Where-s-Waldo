@@ -5,7 +5,6 @@ async function fetchRecordsByImageId(req, res) {
     const rawId = req.params.imageId;
     const imageId = parseInt(rawId, 10);
 
-    // Validate imageId parameter
     if (isNaN(imageId) || imageId < 1) {
         return res.status(400).json({
             success: false,
@@ -17,7 +16,6 @@ async function fetchRecordsByImageId(req, res) {
     }
 
     try {
-        // Fetch records from database
         const records = await db.getRecordsByImageId(imageId);
         return res.status(200).json({
             success: true,
@@ -36,7 +34,6 @@ async function fetchRecordsByImageId(req, res) {
 }
 
 async function createRecord(req, res) {
-    // 1. Validate request body using express-validator
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -49,7 +46,6 @@ async function createRecord(req, res) {
         });
     }
 
-    // 2. Parse and validate individual fields
     const imageId = parseInt(req.body.imageId, 10);
     const name = req.body.name;
     const score = parseFloat(req.body.score);
@@ -83,7 +79,6 @@ async function createRecord(req, res) {
     }
 
     try {
-        // 3. Create new record in database
         const newRecord = await db.writeRecord(imageId, name, score);
         return res.status(201).json({
             success: true,

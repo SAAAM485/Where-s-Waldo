@@ -1,0 +1,40 @@
+.dropdown {
+    position: fixed;
+    color: #a6a6a6;
+    background-color: #262624;
+    border: 0.01rem solid #a6a6a6;
+    border-radius: 0.2rem;
+    z-index: 1000;
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
+    height: auto;
+}
+
+.list {
+    width: 75%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    width: 100%;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #a6a6a6;
+    border-bottom: 0.01rem solid #a6a6a6;
+    .avatar {
+        width: 4rem;
+        margin-right: 0.5rem;
+        cursor: pointer;
+    }
+}
+
+.closeButton {
+    margin: 1.4rem;
+}

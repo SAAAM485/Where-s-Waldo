@@ -39,10 +39,13 @@ async function getCharactersByImageId(imageId) {
         throw error;
     }
 }
-async function verifyCharacter(id, x, y) {
+async function verifyCharacter(imageId, id, x, y) {
     try {
         const character = await prisma.character.findUnique({
-            where: { id: parseInt(id, 10) },
+            where: {
+                imageId: parseInt(imageId, 10),
+                id: parseInt(id, 10),
+            },
         });
         if (!character) {
             return false;

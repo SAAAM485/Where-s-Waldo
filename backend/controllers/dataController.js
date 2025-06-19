@@ -103,9 +103,20 @@ async function fetchCharactersByImageId(req, res) {
 }
 
 async function checkCoordinate(req, res) {
+    const imageId = parseInt(req.body.imageId, 10);
     const id = parseInt(req.body.id, 10);
     const x = parseFloat(req.body.x);
     const y = parseFloat(req.body.y);
+
+    if (isNaN(imageId) || imageId < 1) {
+        return res.status(400).json({
+            success: false,
+            error: {
+                code: "INVALID_IMAGE_ID",
+                message: "imageId must be a positive integer",
+            },
+        });
+    }
 
     if (isNaN(id) || id < 1) {
         return res.status(400).json({
@@ -127,7 +138,7 @@ async function checkCoordinate(req, res) {
     }
 
     try {
-        const isInside = await db.verifyCharacter(id, x, y);
+        const isInside = await db.verifyCharacter(imageId, id, x, y);
         return res.status(200).json({
             success: true,
             data: { inside: isInside },
