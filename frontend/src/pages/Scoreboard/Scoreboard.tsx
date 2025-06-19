@@ -12,7 +12,7 @@ function scoreToMinSec(score: number): string {
         .padStart(2, "0")}`;
 }
 
-const API_BASE_URL: string = "http://localhost:3000";
+const API_BASE_URL = "https://where-s-waldo.onrender.com";
 
 const Scoreboard: React.FC = () => {
     const { imageId } = useParams<{ imageId: string }>();

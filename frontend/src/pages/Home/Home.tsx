@@ -4,7 +4,7 @@ import { getAllImages } from "../../services/api";
 import type { Image } from "../../types/models";
 import styles from "./Home.module.css";
 
-const API_BASE_URL: string = "http://localhost:3000";
+const API_BASE_URL = "https://where-s-waldo.onrender.com";
 
 const Home: React.FC = () => {
     const [images, setImages] = useState<Image[]>([]);

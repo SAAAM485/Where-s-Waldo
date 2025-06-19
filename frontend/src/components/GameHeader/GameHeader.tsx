@@ -3,7 +3,7 @@ import React from "react";
 import type { GameHeaderProps } from "../../types/components";
 import styles from "./GameHeader.module.css";
 
-const API_BASE_URL: string = "http://localhost:3000";
+const API_BASE_URL = "https://where-s-waldo.onrender.com";
 
 const GameHeader: React.FC<GameHeaderProps> = ({ status, characters }) => {
     return (

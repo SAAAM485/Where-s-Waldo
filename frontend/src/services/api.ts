@@ -11,7 +11,7 @@ import type {
     PostRecordRequest,
 } from "../types/models";
 
-const API_BASE_URL: string = "http://localhost:3000/api";
+const API_BASE_URL = "https://where-s-waldo.onrender.com/api";
 
 async function handleFetch<T>(
     fetchPromise: Promise<Response>,

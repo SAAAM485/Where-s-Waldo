@@ -13,7 +13,7 @@ app.use(
         origin: [
             "http://localhost:5173",
             "https://saaam485.github.io",
-            "https://where-s-waldo-frontend.netlify.app",
+            "https://taggingapp.netlify.app",
         ],
     })
 );

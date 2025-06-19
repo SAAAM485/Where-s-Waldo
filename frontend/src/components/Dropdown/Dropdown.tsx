@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import type { DropdownProps } from "../../types/components";
 import styles from "./Dropdown.module.css";
 
-const API_BASE_URL = "http://localhost:3000";
+const API_BASE_URL = "https://where-s-waldo.onrender.com";
 
 const Dropdown: React.FC<DropdownProps> = ({
     position,

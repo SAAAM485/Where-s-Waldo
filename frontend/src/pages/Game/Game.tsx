@@ -15,7 +15,7 @@ import Timer from "../../components/Timer/Timer";
 import Modal from "../../components/Modal/Modal";
 import styles from "./Game.module.css";
 
-const API_BASE_URL: string = "http://localhost:3000";
+const API_BASE_URL = "https://where-s-waldo.onrender.com";
 
 const Game: React.FC = () => {
     const { imageId } = useParams<{ imageId: string }>();
